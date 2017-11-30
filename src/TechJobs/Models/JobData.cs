@@ -86,9 +86,14 @@ namespace TechJobs.Models
             LoadData();
 
             List<Dictionary<string, string>> jobs = new List<Dictionary<string, string>>();
-
+            if (column == "all")
+            {
+                List<Dictionary<string, string>> allJobs = FindByValue(value);
+                return allJobs;
+            }
             foreach (Dictionary<string, string> row in AllJobs)
             {
+
                 string aValue = row[column];
 
                 if (aValue.ToLower().Contains(value.ToLower()))
